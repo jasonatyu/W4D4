@@ -8,6 +8,8 @@ class AlbumsController < ApplicationController
 
     def create
         @album = Album.new(album_params)
+        @band = Band.find_by(id: @album.band_id)
+        @bands = Band.all
         if @album.save
             redirect_to album_url(@album)
         else 
